@@ -6,17 +6,18 @@ export const Main = styled.main`
   height: 100vh;
   margin:0% ;
   display: flex;
+  align-items: center;
   flex-direction: column;
 `;
 export const H4Start = styled.h4`
-  width: 100%;
+  width: 250px;
   height: 46px;
   font-family: "Poppins", sans-serif;
   font-style: normal;
-  font-size: 14px;
+  font-size: 16px;
   margin:0% ;
   color: #2c2c2c;
-padding: 65px 0px 0px 20px;
+padding: 65px 50px 0px 0px;
   &::first-line{
    width: 10px;
   }
