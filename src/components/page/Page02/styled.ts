@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledComponent } from "styled-components";
 export const Main = styled.main`
   background-color: #f3f3f3;
   width: 100%;
@@ -7,10 +8,10 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding:73px 20px 93px 20px;
+  padding: 73px 20px 93px 20px;
 `;
 
-export const H1 = styled.h1`
+export const H1: StyledComponent<"h1", string, H1Props, string> = styled.h1`
   &::first-line {
     color: #2c2c2c;
   }
@@ -20,9 +21,9 @@ export const H1 = styled.h1`
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 34px;
-  color:#37b874;
+  color: #37b874;
 `;
 export const Section = styled.section`
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
 `;

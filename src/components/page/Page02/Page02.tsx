@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
-import { Main, H1,Section } from "./styled";
+import { Main, H1, Section } from "./styled";
 
 const Page02 = () => {
   const [myValue, setMyValue] = useState("Carregando...");
@@ -15,8 +15,11 @@ const Page02 = () => {
 
   return (
     <Main>
-        <Section>
-      <H1>Olá,<br/> {myValue}</H1>
+      <Section>
+        <H1>
+          Olá,
+          <br /> {myValue}
+        </H1>
       </Section>
     </Main>
   );
