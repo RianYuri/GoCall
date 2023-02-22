@@ -64,7 +64,7 @@ border-radius: 5px;
 height: 56px;
 width: 99%;
 border: 0;
-padding-left:4% ;
+padding-left:4.6% ;
 font-family: 'Poppins';
 font-weight: 400;
 font-size: 14px;
