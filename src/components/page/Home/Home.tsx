@@ -3,6 +3,7 @@ import { Main, Figure } from "./styled";
 import goCall from "../../../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 
+
 const Home = () => {
   const Navigate = useNavigate();
   setTimeout(() => {

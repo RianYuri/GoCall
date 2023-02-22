@@ -52,5 +52,6 @@ background: #37B874;
 border-radius: 5px;
 height: 39px;
 border: none;
+cursor: pointer;
 color: white;
 `
