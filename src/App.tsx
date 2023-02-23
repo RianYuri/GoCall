@@ -5,6 +5,7 @@ import './App.css'
 import Page02 from './components/page/Page02/Page02'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
+import Page03 from './components/page/Page03/Page03'
 
 function App() {
   const firebaseConfig = {
@@ -22,6 +23,7 @@ function App() {
 <Route path='/home' element={<Home/>}/>
 <Route path='/page01' element={<Page01/>}/>
 <Route path='/Page02' element={<Page02/>}/>
+<Route path='/Page03' element={<Page03/>}/>
 <Route path='/' element={<Navigate to='/home'/>} />
     </Routes>
    

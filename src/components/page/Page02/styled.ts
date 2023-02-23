@@ -52,6 +52,7 @@ export const ArticlePage = styled.article`
 
   
 `
+
 export const FormPage = styled.form`
 display: flex;
 flex-direction: column;

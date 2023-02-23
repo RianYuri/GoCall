@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
+interface IInputs{
+error:boolean
+}
+
+
 export const InputForm = styled.input`
-background: #FFFFFF;
+background: ${({error}:IInputs)=> error? '#FF6347' : '#FFFFFF'};
 border-radius: 5px;
 height: 56px;
 width: 94%;
