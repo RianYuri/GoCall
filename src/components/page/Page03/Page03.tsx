@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 import {
@@ -15,14 +15,23 @@ import {
 } from "./styled";
 
 const Page03 = () => {
-  const [myValue, setMyValue] = useState("Carregando...");
+  interface MyObject {
+    enteredInputAge: number | string;
+    enteredInputWeight: number ;
+    enteredInputHeight: number ;
+    enteredInputGender: string ;
+    enteredInputPhysicalActivity: string ;
+  }
+
+  const [myValue, setMyValue] = useState<MyObject>();
   useEffect(() => {
-      const myFormValue = firebase.database().ref("/myForm");
-      myFormValue.on("value", (snapshot) => {
-        setMyValue(snapshot.val());
-      });
-    }, []);
-    console.log(myValue.enteredInputAge)
+    const myFormValue = firebase.database().ref("/myForm");
+    myFormValue.on("value", (snapshot) => {
+      setMyValue(snapshot.val());
+    });
+  }, []);
+
+  console.log(myValue?.enteredInputAge)
 
   return (
     <Main>
@@ -43,7 +52,6 @@ const Page03 = () => {
           <Paragraph>
             Para <b>ganhar peso</b> você precisa consumir em média:
           </Paragraph>
-          
         </ArticleText>
       </Section>
       <FormReset>

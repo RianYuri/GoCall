@@ -3,7 +3,7 @@ import { useState } from "react";
 
 
 interface InputHook {
-  value: string;
+  value: string ;
   isValid: boolean;
   hasError: boolean;
   valueChangedHandler: (event: React.ChangeEvent<HTMLInputElement> |  React.ChangeEvent<HTMLSelectElement>) => void;

@@ -60,8 +60,6 @@ export const CheckBoxRemember = styled.input`
     background-size: cover;
     background-repeat: no-repeat;
     background-position:center;
-    background-image: url('../../../assets/vectorBlack.png');
-    
     border: 1.5px solid #1D9F5A;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -72,10 +70,9 @@ export const CheckBoxRemember = styled.input`
   
   &[type="checkbox"]:checked::before {
     content: "";
-    background-image: url('../../../assets/vectorBlack.png');
+
     display: block;
     background-color:#37B874;
-
     width: 16px;
     height: 15px;
 }

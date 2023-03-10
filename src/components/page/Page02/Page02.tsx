@@ -70,14 +70,14 @@ const Page02 = () => {
   }, []);
   const myFormValue = firebase.database().ref("myForm");
 
-  const formGoCall = {
-    enteredInputAge,
-    enteredInputWeight,
-    enteredInputHeight,
-    enteredInputGender,
-    enteredInputPhysicalActivity,
-  };
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    const formGoCall = {
+      enteredInputAge,
+      enteredInputWeight,
+      enteredInputHeight,
+      enteredInputGender,
+      enteredInputPhysicalActivity,
+    };
     event.preventDefault();
     myFormValue.set(formGoCall);
     if (
