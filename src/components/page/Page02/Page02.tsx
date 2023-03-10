@@ -5,8 +5,6 @@ import "firebase/compat/database";
 import Inputs from "../../Inputs/Inputs";
 import useInput from "../../hooks/InputsValidation";
 
-
-
 //Styled-Components
 import {
   ArticleText,
@@ -47,7 +45,21 @@ const Page02 = () => {
     inputBlurHandler: heightBlurHandler,
     resetInput: resetHeightInput,
   } = useInput((value) => value.trim() !== "");
-  
+  const {
+    value: enteredInputGender,
+    isValid: setEnteredInputGender,
+    hasError: genderInputHasError,
+    valueChangedHandler: genderChangedHandler,
+    inputBlurHandler: genderBlurHandler,
+  } = useInput((value) => value.trim() !== "");
+  const {
+    value: enteredInputPhysicalActivity,
+    isValid: setEnteredInputPhysicalActivity,
+    hasError: physicalActivityInputHasError,
+    valueChangedHandler: physicalActivityChangedHandler,
+    inputBlurHandler: physicalActivityBlurHandler,
+  } = useInput((value) => value.trim() !== "");
+
   const [myValue, setMyValue] = useState("Carregando...");
   const navigate = useNavigate();
   useEffect(() => {
@@ -56,25 +68,34 @@ const Page02 = () => {
       setMyValue(snapshot.val());
     });
   }, []);
+  const myFormValue = firebase.database().ref("myForm");
 
-  const submitHandler = (event:React.FormEvent<HTMLFormElement>) => {
+  const formGoCall = {
+    enteredInputAge,
+    enteredInputWeight,
+    enteredInputHeight,
+    enteredInputGender,
+    enteredInputPhysicalActivity,
+  };
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    myFormValue.set(formGoCall);
     if (
+      setEnteredInputGender &&
       setEnteredInputAge &&
       setEnteredInputWeight &&
-      setEnteredInputHeight
+      setEnteredInputHeight &&
+      setEnteredInputPhysicalActivity
     ) {
-navigate('/page03')
-
-    }else{
-
+      navigate("/page03");
+    } else {
       resetAgeInput();
       resetWeightInput();
       resetHeightInput();
     }
   };
 
+  
   return (
     <Main>
       <Section>
@@ -89,7 +110,14 @@ navigate('/page03')
             <ParagraphEnergy>
               Vamos calcular o seu gasto energético basal!
             </ParagraphEnergy>
-            <SelectForm name="Seusexo">
+
+            <SelectForm
+              name="Seusexo"
+              onChange={genderChangedHandler}
+              onBlur={genderBlurHandler}
+              value={enteredInputGender}
+              error={genderInputHasError}
+            >
               <OptionForm value="" disabled selected>
                 Seu sexo
               </OptionForm>
@@ -97,7 +125,7 @@ navigate('/page03')
               <OptionForm value="feminino">Feminino</OptionForm>
             </SelectForm>
             <Inputs
-              type="text"
+              type="number"
               placeholder="Sua Idade"
               onChange={ageChangedHandler}
               value={enteredInputAge}
@@ -105,7 +133,7 @@ navigate('/page03')
               error={nameInputHasErrorAge}
             />
             <Inputs
-              type="text"
+              type="number"
               placeholder="Seu Peso"
               onChange={weightChangedHandler}
               value={enteredInputWeight}
@@ -113,14 +141,19 @@ navigate('/page03')
               error={weightInputHasError}
             />
             <Inputs
-              type="text"
+              type="number"
               placeholder="Sua altura(cm)"
               onChange={heightChangedHandler}
               value={enteredInputHeight}
               onBlur={heightBlurHandler}
               error={heightInputHasError}
             />
-            <SelectForm>
+            <SelectForm
+              onChange={physicalActivityChangedHandler}
+              onBlur={physicalActivityBlurHandler}
+              value={enteredInputPhysicalActivity}
+              error={physicalActivityInputHasError}
+            >
               <OptionForm value="" disabled selected>
                 Seu nível de atividade física
               </OptionForm>
