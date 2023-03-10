@@ -11,14 +11,15 @@ import {
   LabelRemember,
   Main,
   Paragraph,
+  Results,
   Section,
 } from "./styled";
 
 const Page03 = () => {
   interface MyObject {
-    enteredInputAge: number | string;
-    enteredInputWeight: number ;
-    enteredInputHeight: number ;
+    enteredInputAge: number;
+    enteredInputWeight: number;
+    enteredInputHeight: number;
     enteredInputGender: string ;
     enteredInputPhysicalActivity: string ;
   }
@@ -32,7 +33,12 @@ const Page03 = () => {
   }, []);
 
   console.log(myValue?.enteredInputAge)
+let Weight = myValue?.enteredInputWeight ?? 0;
+let Height = myValue?.enteredInputHeight ?? 0;
+let Age = myValue?.enteredInputAge ?? 0;
 
+let HomensTMB = Math.round((Weight * 13.75) + (5 * Height) - (6.76 * Age) + 66.5);
+console.log(HomensTMB)
   return (
     <Main>
       <Section>
@@ -41,7 +47,11 @@ const Page03 = () => {
         </H1>
         <ArticleText>
           <Paragraph>
-            Seu <b>metabolismo basal </b>é de:
+            Seu <b>metabolismo basal </b>é de: 
+            <Results>
+
+            {HomensTMB} Calorias.
+            </Results>
           </Paragraph>
           <Paragraph>
             Para <b>manter o seu peso</b> você precisa consumir em média:

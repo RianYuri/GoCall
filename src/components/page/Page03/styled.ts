@@ -31,6 +31,13 @@ export const H1 = styled.h1`
   margin-left: 0%;
   line-height: 105%;
 `;
+export const Results = styled.p`
+  font-family: 'Poppins';
+font-weight: 700;
+font-size: 18px;
+color: #37B874;
+margin: 0%;
+`
 export const ArticleText = styled.article`
   width: 100%;
   height: 90%;
