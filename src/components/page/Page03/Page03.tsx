@@ -15,15 +15,14 @@ import {
   Section,
 } from "./styled";
 
-
-
 const Page03 = () => {
+  const [resultMetabolism, setResultMetabolism] = useState<number>();
   interface MyObject {
     enteredInputAge: number;
     enteredInputWeight: number;
     enteredInputHeight: number;
-    enteredInputGender: string ;
-    enteredInputPhysicalActivity: string ;
+    enteredInputGender: string;
+    enteredInputPhysicalActivity: string;
   }
 
   const [myValue, setMyValue] = useState<MyObject>();
@@ -34,23 +33,20 @@ const Page03 = () => {
     });
   }, []);
 
-  const [resultMetabolism , setResultMetabolism] = useState<number>()
-
-  console.log(myValue?.enteredInputAge)
-let Weight = myValue?.enteredInputWeight ?? 0;
-let Height = myValue?.enteredInputHeight ?? 0;
-let Age = myValue?.enteredInputAge ?? 0;
-let Gender = myValue?.enteredInputGender;
-
+  const {
+    enteredInputWeight: Weight = 0,
+    enteredInputHeight: Height = 0,
+    enteredInputAge: Age = 0,
+    enteredInputGender: Gender,
+  } = myValue ?? {};
 useEffect(() => {
-
-  if (Gender === "masculino") {
-    setResultMetabolism(()=>Math.round((Weight * 13.75) + (5 * Height) - (6.76 * Age) + 66.5));
-  }if (Gender === "feminino") {
-    setResultMetabolism(()=>Math.round((Weight * 9.6) + (1.8 * Height) - (4.7 * Age) + 665));
-  }
-}, []);
-
+  
+  const genderCoefficient =
+    Gender === "masculino" ? 5 : Gender === "feminino" ? -161 : 0;
+  setResultMetabolism(() =>
+    Math.round(10 * Weight + 6.25 * Height - 5 * Age + genderCoefficient)
+  );
+}, [resultMetabolism])
 
 
 
@@ -64,30 +60,23 @@ useEffect(() => {
         </H1>
         <ArticleText>
           <Paragraph>
-            Seu <b>metabolismo basal </b>é de: 
+            Seu <b>metabolismo basal </b>é de:<br/>
+            <Results>{resultMetabolism} Calorias.</Results>
+          </Paragraph>
+          <Paragraph>
+            Para <b>manter o seu peso</b> você precisa consumir em média:<br/>
+            <Results>{resultMetabolism} Calorias.</Results>
+          </Paragraph>
+          <Paragraph>
+            Para <b>perder peso</b> você precisa consumir em média:<br/>
             <Results>
-
-            {resultMetabolism} Calorias.
+              {resultMetabolism ? resultMetabolism - 400 : ""} Calorias.
             </Results>
           </Paragraph>
           <Paragraph>
-            Para <b>manter o seu peso</b> você precisa consumir em média:
+            Para <b>ganhar peso</b> você precisa consumir em média:<br/>
             <Results>
-
-            {resultMetabolism} Calorias.
-            </Results>
-          </Paragraph>
-          <Paragraph>
-            Para <b>perder peso</b> você precisa consumir em média:
-            <Results>
-
-            {resultMetabolism ? resultMetabolism - 400 : ""} Calorias.
-            </Results>
-          </Paragraph>
-          <Paragraph>
-            Para <b>ganhar peso</b> você precisa consumir em média:
-            <Results>
-          {resultMetabolism ? resultMetabolism + 400 : ""} Calorias.
+              {resultMetabolism ? resultMetabolism + 400 : ""} Calorias.
             </Results>
           </Paragraph>
         </ArticleText>
