@@ -46,7 +46,7 @@ useEffect(() => {
   setResultMetabolism(() =>
     Math.round(10 * Weight + 6.25 * Height - 5 * Age + genderCoefficient)
   );
-}, [resultMetabolism])
+}, [myValue])
 
 
 
