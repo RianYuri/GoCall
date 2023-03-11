@@ -43,7 +43,7 @@ export const ArticleText = styled.article`
   height: 90%;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 25px;
 `;
 
 export const Paragraph = styled.p`

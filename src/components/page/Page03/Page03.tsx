@@ -15,6 +15,8 @@ import {
   Section,
 } from "./styled";
 
+
+
 const Page03 = () => {
   interface MyObject {
     enteredInputAge: number;
@@ -32,13 +34,28 @@ const Page03 = () => {
     });
   }, []);
 
+  const [resultMetabolism , setResultMetabolism] = useState<number>()
+
   console.log(myValue?.enteredInputAge)
 let Weight = myValue?.enteredInputWeight ?? 0;
 let Height = myValue?.enteredInputHeight ?? 0;
 let Age = myValue?.enteredInputAge ?? 0;
+let Gender = myValue?.enteredInputGender;
 
-let HomensTMB = Math.round((Weight * 13.75) + (5 * Height) - (6.76 * Age) + 66.5);
-console.log(HomensTMB)
+useEffect(() => {
+
+  if (Gender === "masculino") {
+    setResultMetabolism(()=>Math.round((Weight * 13.75) + (5 * Height) - (6.76 * Age) + 66.5));
+  }if (Gender === "feminino") {
+    setResultMetabolism(()=>Math.round((Weight * 9.6) + (1.8 * Height) - (4.7 * Age) + 665));
+  }
+}, []);
+
+
+
+
+
+
   return (
     <Main>
       <Section>
@@ -50,17 +67,28 @@ console.log(HomensTMB)
             Seu <b>metabolismo basal </b>é de: 
             <Results>
 
-            {HomensTMB} Calorias.
+            {resultMetabolism} Calorias.
             </Results>
           </Paragraph>
           <Paragraph>
             Para <b>manter o seu peso</b> você precisa consumir em média:
+            <Results>
+
+            {resultMetabolism} Calorias.
+            </Results>
           </Paragraph>
           <Paragraph>
             Para <b>perder peso</b> você precisa consumir em média:
+            <Results>
+
+            {resultMetabolism ? resultMetabolism - 400 : ""} Calorias.
+            </Results>
           </Paragraph>
           <Paragraph>
             Para <b>ganhar peso</b> você precisa consumir em média:
+            <Results>
+          {resultMetabolism ? resultMetabolism + 400 : ""} Calorias.
+            </Results>
           </Paragraph>
         </ArticleText>
       </Section>
