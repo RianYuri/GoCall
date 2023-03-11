@@ -55,7 +55,9 @@ export const FormPage = styled.form`
 `;
 interface IInputs {
   error: boolean;
+  borderError:boolean;
 }
+
 export const SelectForm = styled.select`
   border: 1px solid ${({ error }: IInputs) => (error ? "#FF6347" : "#FFFFFF")};
   background: #ffffff;
@@ -66,8 +68,9 @@ export const SelectForm = styled.select`
   font-family: "Poppins";
   font-weight: 400;
   font-size: 14px;
-  color: #969cb3;
+  color:  ${({ borderError }: IInputs) => (borderError ? "black" : "#969cb3")};
 `;
+
 export const OptionForm = styled.option`
   font-family: "Poppins";
   font-weight: 400;

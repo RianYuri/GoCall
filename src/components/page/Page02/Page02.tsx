@@ -18,6 +18,7 @@ import {
   ButtonBack,
   SelectForm,
   OptionForm,
+  
 } from "./styled";
 
 const Page02 = () => {
@@ -61,6 +62,7 @@ const Page02 = () => {
   } = useInput((value) => value.trim() !== "");
 
   const [myValue, setMyValue] = useState("Carregando...");
+  const [borderError, setBorderError] = useState(false)
   const navigate = useNavigate();
   useEffect(() => {
     const myValueRef = firebase.database().ref("/myValue");
@@ -94,8 +96,15 @@ const Page02 = () => {
       resetHeightInput();
     }
   };
-
+useEffect(() => {
   
+  if(!setEnteredInputGender){
+    setBorderError(false)
+  }else{
+    setBorderError(true)
+  }
+}, [genderChangedHandler])
+
   return (
     <Main>
       <Section>
@@ -117,6 +126,7 @@ const Page02 = () => {
               onBlur={genderBlurHandler}
               value={enteredInputGender}
               error={genderInputHasError}
+              borderError={borderError}
             >
               <OptionForm value="" disabled selected>
                 Seu sexo
@@ -153,6 +163,7 @@ const Page02 = () => {
               onBlur={physicalActivityBlurHandler}
               value={enteredInputPhysicalActivity}
               error={physicalActivityInputHasError}
+              borderError={borderError}
             >
               <OptionForm value="" disabled selected>
                 Seu nível de atividade física
