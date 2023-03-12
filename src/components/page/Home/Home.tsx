@@ -1,5 +1,5 @@
 
-import { Main, Figure } from "./styled";
+import { Main,DivAnimation } from "./styled";
 import goCall from "../../../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 
@@ -12,10 +12,7 @@ const Home = () => {
 
   return (
     <Main>
-      <Figure>
-        <img src={goCall} />
-       
-      </Figure>
+        <DivAnimation src={goCall} />
     </Main>
   );
 };
