@@ -1,11 +1,11 @@
-import Home from './components/page/Home/Home'
-import Page01 from './components/page/Page01/Page01'
+import Home from './page/Home/Home'
+import Page01 from './page/Page01/Page01'
 import { Route, Routes,Navigate } from 'react-router-dom'
 import './App.css'
-import Page02 from './components/page/Page02/Page02'
+import Page02 from './page/Page02/Page02'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
-import Page03 from './components/page/Page03/Page03'
+import Page03 from './page/Page03/Page03'
 
 function App() {
   const firebaseConfig = {

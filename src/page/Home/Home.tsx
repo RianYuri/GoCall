@@ -1,6 +1,6 @@
 
 import { Main,DivAnimation } from "./styled";
-import goCall from "../../../assets/logo.svg";
+import goCall from "../../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 
 

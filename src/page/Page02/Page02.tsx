@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
-import Inputs from "../../Inputs/Inputs";
-import useInput from "../../hooks/InputsValidation";
+import Inputs from "../../components/Inputs/Inputs";
+import useInput from "../../components/hooks/InputsValidation";
 
 //Styled-Components
 import {
