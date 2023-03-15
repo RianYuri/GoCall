@@ -3,6 +3,7 @@ import { Main, H4Start, InputName, ArticlePage, ButtonNext } from "./styled";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import { useNavigate } from "react-router-dom";
+import { HistoricCards } from "../../components/HistoricCards/HistoricCards";
 
 const Page01 = () => {
   const [enteredName, setEnteredName] = useState("");
@@ -33,6 +34,7 @@ const navigate = useNavigate()
         />
         <ButtonNext onClick={handleNextClick}>Avançar</ButtonNext>
       </ArticlePage>
+      <HistoricCards></HistoricCards>
     </Main>
   );
 };
