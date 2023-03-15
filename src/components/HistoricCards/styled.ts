@@ -49,7 +49,7 @@ color: #FFFFFF;
 
 export const CardContainer = styled.article`
 display: flex;
-justify-content: center;
+justify-content: flex-start;
 align-items: center;
 gap: 8px;
 width: 100%;
@@ -61,7 +61,7 @@ flex-direction: column;
 export const CardInformation = styled.div`
 padding: 12px 8px;
 width: 326px;
-height: 70px;
+height: 60px;
 background: #FFFFFF;
 border-radius: 5px;
 `
@@ -95,4 +95,40 @@ margin: 0%;
 &::first-line{
     font-size: 18px;
   }
+`
+export const WeightResults = styled.article`
+display: flex;
+width: 100%;
+align-items: center;
+height: 100%;
+justify-content: space-between;
+`
+
+export const WeightHeight = styled.div`
+display: flex;
+align-items: center;
+gap: 14px;
+`
+export const PWeiHei = styled.p`
+font-family: 'Poppins';
+font-weight: 500;
+font-size: 12px;
+color: #969CB2;
+`
+export const SeeResults = styled.p`
+width: 108px;
+font-family: 'Poppins';
+font-size: 12px;
+font-weight: 500;
+text-align: right;
+
+color: #37B874;
+`
+export const IconResults = styled.img`
+
+`
+export const ResultsContainer = styled.div`
+display: flex;
+margin: 0%;
+gap: 4px;
 `
