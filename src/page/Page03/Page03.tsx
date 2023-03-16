@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 import PulseLoader from "react-spinners/PulseLoader";
+import { useNavigate } from "react-router-dom";
 import {
   ArticleCheckbox,
   ArticleText,
@@ -32,7 +33,7 @@ const Page03 = () => {
       setMyValue(snapshot.val());
     });
   }, []);
-
+const navigate = useNavigate()
   const {
     enteredInputWeight: Weight = 0,
     enteredInputHeight: Height = 0,
@@ -46,6 +47,10 @@ const Page03 = () => {
       Math.round(10 * Weight + 6.25 * Height - 5 * Age + genderCoefficient)
     );
   }, [myValue]);
+const ResetButton = () =>{
+  navigate("/page01")
+
+}
 
   return (
     <Main>
@@ -102,7 +107,7 @@ const Page03 = () => {
           <LabelRemember>Lembrar das minhas informações</LabelRemember>
         </ArticleCheckbox>
 
-        <ButtonReset>Reiniciar</ButtonReset>
+        <ButtonReset onClick={ResetButton}>Reiniciar</ButtonReset>
       </FormReset>
     </Main>
   );

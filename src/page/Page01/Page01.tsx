@@ -4,10 +4,12 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import { useNavigate } from "react-router-dom";
 import { HistoricCards } from "../../components/HistoricCards/HistoricCards";
-
+let cardlistHelper = [];
 const Page01 = () => {
+
+
   const [enteredName, setEnteredName] = useState("");
-  
+  const [saveCard, setSaveCard] = useState()
  
   
 const navigate = useNavigate()
