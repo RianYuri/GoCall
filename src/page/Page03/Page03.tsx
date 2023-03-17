@@ -17,7 +17,9 @@ import {
   Section,
 } from "./styled";
 const Page03 = () => {
+
   const [resultMetabolism, setResultMetabolism] = useState<number>();
+  const [checkboxSelect, setCheckboxSelect] = useState(false);
   interface MyObject {
     enteredInputAge: number;
     enteredInputWeight: number;
@@ -52,6 +54,10 @@ const ResetButton = () =>{
 
 }
 
+const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  setCheckboxSelect(event.target.checked);
+}
+console.log(checkboxSelect)
   return (
     <Main>
       <Section>
@@ -103,7 +109,7 @@ const ResetButton = () =>{
       </Section>
       <FormReset>
         <ArticleCheckbox>
-          <CheckBoxRemember type="checkbox" />
+          <CheckBoxRemember type="checkbox" onChange={handleCheckboxChange} />
           <LabelRemember>Lembrar das minhas informações</LabelRemember>
         </ArticleCheckbox>
 
