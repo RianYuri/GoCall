@@ -17,6 +17,8 @@ import {
   Section,
 } from "./styled";
 const Page03 = () => {
+  const keepMyInformation = firebase.database().ref("myInformationIsTrue");
+
 
   const [resultMetabolism, setResultMetabolism] = useState<number>();
   const [checkboxSelect, setCheckboxSelect] = useState(false);
@@ -52,12 +54,15 @@ const navigate = useNavigate()
 const ResetButton = () =>{
   navigate("/page01")
 
+  keepMyInformation.set(checkboxSelect)
 }
 
 const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   setCheckboxSelect(event.target.checked);
 }
 console.log(checkboxSelect)
+
+
   return (
     <Main>
       <Section>
