@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Main, H4Start, InputName, ArticlePage, ButtonNext } from "./styled";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import { useNavigate } from "react-router-dom";
 import { HistoricCards } from "../../components/HistoricCards/HistoricCards";
-let cardlistHelper = [];
+
 const Page01 = () => {
 
 
   const [enteredName, setEnteredName] = useState("");
-  const [saveCard, setSaveCard] = useState()
  
+ const [myInformationIsTrue, setMyInformationIsTrue] = useState()
   
 const navigate = useNavigate()
 
@@ -18,11 +18,16 @@ const navigate = useNavigate()
   const handleNextClick = async () => {
     if (enteredName !== "") {
       myValueRef.set(enteredName);
-      console.log(myValueRef)
       navigate('/page02')
     }
   };
-
+  useEffect(() => {
+    const myFormValue = firebase.database().ref("/myInformationIsTrue");
+    myFormValue.on("value", (snapshot) => {
+      setMyInformationIsTrue(snapshot.val());
+    });
+    console.log(myInformationIsTrue)
+  }, []);
   return (
     <Main>
       <H4Start>
