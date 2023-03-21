@@ -26,7 +26,7 @@ const navigate = useNavigate()
     myFormValue.on("value", (snapshot) => {
       setMyInformationIsTrue(snapshot.val());
     });
-    console.log(myInformationIsTrue)
+  
   }, []);
   return (
     <Main>
@@ -41,7 +41,10 @@ const navigate = useNavigate()
         />
         <ButtonNext onClick={handleNextClick}>Avançar</ButtonNext>
       </ArticlePage>
-      <HistoricCards></HistoricCards>
+      {myInformationIsTrue ?
+      <HistoricCards></HistoricCards> :
+      null
+      }
     </Main>
   );
 };
